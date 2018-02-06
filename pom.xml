@@ -40,9 +40,9 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <apache.hadoop.version>0.20.2</apache.hadoop.version>
-        <apache.hbase.version>0.92.1</apache.hbase.version>
-        <apache.hive.version>0.10.0</apache.hive.version>
+        <apache.hadoop.version>2.7.0</apache.hadoop.version>
+        <apache.hbase.version>1.2.0</apache.hbase.version>
+        <apache.hive.version>1.1.0</apache.hive.version>
         <codehaus.jackson.version>1.8.8</codehaus.jackson.version>
     </properties>
 
@@ -66,7 +66,7 @@
                         <plugin>
                             <groupId>org.apache.maven.plugins</groupId>
                             <artifactId>maven-javadoc-plugin</artifactId>
-                            <version>2.7</version>
+                            <version>3.0.0</version>
                             <configuration>
                                <additionalparam>-Xdoclint:none</additionalparam>
                             </configuration>
@@ -88,8 +88,8 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <source>1.6</source>
-                    <target>1.6</target>
+                    <source>1.8</source>
+                    <target>1.8</target>
                 </configuration>
             </plugin>
             <plugin>
@@ -107,8 +107,9 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.0.0</version>
                 <configuration>
-                  <additionalparam>-Xdoclint:none</additionalparam>
+                    <arguments>-Dmaven.javadoc.skip=true</arguments>
                 </configuration>
                 <executions>
                     <execution>
@@ -190,13 +191,13 @@
 
         <dependency>
             <groupId>org.apache.hadoop</groupId>
-            <artifactId>hadoop-core</artifactId>
+            <artifactId>hadoop-common</artifactId>
             <version>${apache.hadoop.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.apache.hbase</groupId>
-            <artifactId>hbase</artifactId>
+            <artifactId>hbase-client</artifactId>
             <version>${apache.hbase.version}</version>
         </dependency>
 
