@@ -6,6 +6,8 @@ import com.google.common.hash.Hashing;
 import org.apache.hadoop.hive.ql.exec.Description;
 import org.apache.hadoop.hive.ql.exec.UDF;
 
+import java.nio.charset.StandardCharsets;
+
 /**
  * Calculate the MD5 hash for a String.
  * <p/>
@@ -21,7 +23,7 @@ public class HashMD5UDF extends UDF {
 
 
     public Long evaluate(String str) {
-        HashCode hc = hash.hashUnencodedChars(str);
+        HashCode hc = hash.hashString(str, StandardCharsets.UTF_8);
 
         return hc.asLong();
     }

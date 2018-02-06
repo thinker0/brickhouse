@@ -24,6 +24,7 @@ import com.google.common.hash.Hashing;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.math.RoundingMode;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -75,7 +76,7 @@ public class SketchSet implements ICountDistinct {
     }
 
     public void addItem(String str) {
-        HashCode hc = HASH.hashUnencodedChars(str);
+        HashCode hc = HASH.hashString(str, StandardCharsets.UTF_8);
         this.addHashItem(hc.asLong(), str);
     }
 
@@ -116,7 +117,7 @@ public class SketchSet implements ICountDistinct {
     }
 
     static public double EstimatedReach(String lastItem, int maxItems) {
-        long maxHash = HASH.hashUnencodedChars(lastItem).asLong();
+        long maxHash = HASH.hashString(lastItem, StandardCharsets.UTF_8).asLong();
         return EstimatedReach(maxHash, maxItems);
     }
 

@@ -10,6 +10,7 @@ import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.SortedMap;
 import java.util.UUID;
@@ -296,7 +297,7 @@ public class SketchSetTest {
         String line;
         while ((line = reader.readLine()) != null) {
             ss.addItem(line);
-            ss2.addHashItem(md5.hashUnencodedChars(line).asLong(), line);
+            ss2.addHashItem(md5.hashString(line, StandardCharsets.UTF_8).asLong(), line);
             cnt++;
         }
 
